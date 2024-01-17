@@ -1,0 +1,36 @@
+<section class="w-full max-w-xs mx-auto">
+  <form [formGroup]="loginForm" (ngSubmit)="sendCredentials()" class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+    <div class="mb-4">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="email">
+        Username
+      </label>
+      <input
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+        id="email"
+        type="email"
+        placeholder="your@email.com"
+        formControlName="username"
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
+        Password
+      </label>
+      <input
+        class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+        id="password"
+        type="password"
+        placeholder="Your password"
+        formControlName="password"
+      />
+    </div>
+    <div class="flex items-center justify-between">
+      <button
+        class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
+        type="submit"
+      >
+        Send
+      </button>
+    </div>
+  </form>
+</section>
