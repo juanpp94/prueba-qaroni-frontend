@@ -4,3 +4,22 @@
 @tailwind utilities;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.error-message-container {
+  margin-top: 10px;
+  background: red;
+  opacity: 0.6;
+  padding: 2px;
+  border-radius: 5px;
+
+  p {
+    margin: 5px;
+  }
+}
+
+.container-center {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}

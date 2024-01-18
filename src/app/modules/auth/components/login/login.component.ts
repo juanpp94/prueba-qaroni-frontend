@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
+import { GeneralService } from 'src/app/services/general.service';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +16,14 @@ export class LoginComponent {
     password: new FormControl('',Validators.required)
   });
 
-  constructor() {
+  user: User = {
+    username: '',
+    password: ''
+  }
+
+
+
+  constructor(private _authService: AuthService, private _generalService: GeneralService) {
 
   }
 
@@ -21,9 +31,33 @@ export class LoginComponent {
 
   }
 
+  /**
+   * Method to login into the application
+   */
   sendCredentials() {
-    console.log("enviadas:",this.loginForm.value);
-  }
+    this.user.username = this.loginForm.value.username!;
+    this.user.password = this.loginForm.value.password!;
+      this._authService.sendCredentials(this.user).subscribe(
+        (res) => {
+          let tokenAux = res["result"][0]["access_token"];
+          localStorage.setItem("token",tokenAux);
+        },
+        (error) => {
+          let errorMessage = "No se ha podido iniciar sesión";
+          let errorCode = error["error"]["errors"][0]["code"];
+          if(errorCode === "E0012") {
+            errorMessage = "Las credenciales ingresadas son inválidas."
+          }
+          this._generalService.setErrorMessage(errorMessage);
 
+
+        }
+      )
+
+    }
 
 }
+
+
+
+
