@@ -7,11 +7,11 @@ const routes: Routes = [
   {
     path: 'list',
     component: NewslistComponent
-  }, 
-  // {
-  //   path: '/:id',
-  //   component: NewdetailComponent
-  // }
+  },
+  {
+    path: ':id',
+    component: NewdetailComponent
+  }
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { New } from 'src/app/models/new';
 import { NewsService } from 'src/app/services/news.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { NewsService } from 'src/app/services/news.service';
 })
 export class NewslistComponent {
 
-  news: any = [];
+  news: New[] = [];
   constructor(private _newsService: NewsService) {
 
   }
@@ -24,11 +25,23 @@ export class NewslistComponent {
   setNews(): any {
     this._newsService.getNews().subscribe(
       (res) => {
-        console.log("res:",res);
+        let newsAux = res['result'];
+        for(let i = 0; i < newsAux.length; i++) {
+          let descriptionAux = this.convertDescriptionIntoPlainText(newsAux[i]['shortDescription'])
+
+          newsAux[i]['shortDescription'] = descriptionAux;
+        }
+        this.news = newsAux;
       },
       (error) => {
         console.log("error:",error);
       }
     )
+  }
+
+  convertDescriptionIntoPlainText(htmlText: any) {
+    let divAux = document.createElement("div");
+    divAux.innerHTML = htmlText;
+    return divAux.textContent || divAux.innerText;
   }
 }

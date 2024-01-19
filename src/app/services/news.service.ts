@@ -13,11 +13,11 @@ export class NewsService {
 
   /**
    * Function to request news from the API
-   * 
+   *
    */
   getNews(): Observable<any> {
     let tokenAux = this._generalService.getToken();
     let url = this._generalService.getUrl();
-    return this.http.get(`${url}//merchants/71/news`);
+    return this.http.get(`${url}/merchants/71/news`);
   }
 }
