@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './modules/auth/auth.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
+import { SharedModule } from './modules/shared/shared.module';
+import { NewsModule } from './modules/news/news.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { AuthInterceptorService } from './interceptors/auth-interceptor.service'
     AppRoutingModule,
     BrowserAnimationsModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
+    NewsModule
   ],
   providers: [
     {

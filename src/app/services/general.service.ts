@@ -37,4 +37,11 @@ export class GeneralService {
   getUrl() {
     return this.url;
   }
+
+  /** Function that converts html into plain text */
+  convertDescriptionIntoPlainText(htmlText: any): string {
+    let divAux = document.createElement("div");
+    divAux.innerHTML = htmlText;
+    return divAux.textContent || divAux.innerText;
+  }
 }

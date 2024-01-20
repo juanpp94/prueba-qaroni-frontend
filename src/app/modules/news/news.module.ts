@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NewsRoutingModule } from './news-routing.module';
 import { NewslistComponent } from './components/newslist/newslist.component';
 import { NewdetailComponent } from './components/newdetail/newdetail.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { NewdetailComponent } from './components/newdetail/newdetail.component';
   ],
   imports: [
     CommonModule,
-    NewsRoutingModule
+    NewsRoutingModule,
+    SharedModule
   ],
   exports: [
     NewslistComponent,
