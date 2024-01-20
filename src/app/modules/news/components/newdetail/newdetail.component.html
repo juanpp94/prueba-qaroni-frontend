@@ -1,13 +1,10 @@
 <app-preloader *ngIf=!contentIsCharged></app-preloader>
-<div *ngIf=contentIsCharged class="bg-white rounded-lg shadow-lg p-6">
+<div *ngIf=contentIsCharged>
+   <header>
+    <img src="{{new.imageUrl}}" alt="">
     <h2 class="text-3xl font-bold mb-4">{{ new.title }}</h2>
-    <p class="text-gray-600 mb-4">{{ new.largeDescription }}</p>
-    <p class="text-lg leading-relaxed">{{ new.shortDescription }}</p>
-    <div class="mt-8 flex items-center">
-      <img src="assets/images/author.jpg" alt="Author" class="w-12 h-12 rounded-full mr-4">
-      <div>
-        <p class="text-gray-700 font-medium">Por John Doe</p>
-        <p class="text-gray-500">Publicado el 20 de enero de 2024</p>
-      </div>
-    </div>
+    <p>{{ new.date }}</p>
+   </header>
+    <p >{{ new.largeDescription }}</p>
+   
   </div>
