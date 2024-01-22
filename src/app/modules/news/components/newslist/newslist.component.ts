@@ -54,10 +54,10 @@ export class NewslistComponent {
         
       },
       (error) => {
-        this.contentIsCharged = true;
+        this.contentIsCharged = false;
         this._newsService.news = [];
-        let errorMessage = "Ha ocurrido un error al momento de cargar la data. Asegúrese que tenga conexión a Internet."
-        this._generalService.setErrorMessage(errorMessage);
+        //let errorMessage = "Ha ocurrido un error al momento de cargar la data. Asegúrese que tenga conexión a Internet."
+        //this._generalService.setErrorMessage(errorMessage);
         //this.router.navigateByUrl("groups/list");
         //this.contentIsCharged = false;
     
