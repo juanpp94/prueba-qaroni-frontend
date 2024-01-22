@@ -1,0 +1,239 @@
+<div  class="container-center">
+  <!-- Form to add people-->
+  <section *ngIf="!hasSentPersonalInformation" class="w-full max-w-xs mx-auto">
+    <form [formGroup]="addPersonForm" (ngSubmit)="sendPersonData()" class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
+          Nombre
+        </label>
+        <input
+          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+          id="name"
+          type="text"
+          placeholder="Juan Diego"
+          formControlName="name"
+        />
+        <div class="error-message-container" *ngIf="addPersonForm.controls['name'].errors?.['required'] && addPersonForm.controls['name'].dirty"  >
+          <p class="error-icon">El nombre es un campo requerido.</p>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="lastname">
+          Apellido
+        </label>
+        <input
+          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+          id="lastname"
+          type="text"
+          placeholder="Porras"
+          formControlName="lastname"
+        />
+        <div class="error-message-container" *ngIf="addPersonForm.controls['name'].errors?.['required'] && addPersonForm.controls['name'].dirty"  >
+          <p class="error-icon">El nombre es un campo requerido.</p>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block checkbox text-sm font-bold text-gray-700" for="hasOlderChildren">
+          <input
+          class=" px-3 py-2 leading-tight text-gray-500 border rounded appearance-none focus:outline-none"
+          id="hasOlderChildren"
+          type="checkbox"
+          formControlName="hasOlderChildren"
+
+        />
+          <span>Tengo hijos mayores a 18 anos</span>
+
+        </label>
+
+      </div>
+      <div *ngIf="addPersonForm.get('hasOlderChildren')?.value"class="mb-4">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="amountOfChildren">
+          Cantidad de hijos
+        </label>
+        <input
+          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+          id="amountOfChildren"
+          type="number"
+          placeholder="1"
+          formControlName="amountOfChildren"
+        />
+        <div class="error-message-container" *ngIf="addPersonForm.controls['amountOfChildren'].errors?.['required'] && addPersonForm.controls['amountOfChildren'].dirty"  >
+          <p class="error-icon">La cantidad de hijos es un campo requerido.</p>
+        </div>
+      </div>
+
+
+      <div class="flex items-center justify-between">
+        <button
+          class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
+          type="submit"
+        >
+          Enviar
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!--Form to add children-->
+  <section *ngIf="!hasSentChildInformation && hasOlderChildren && amountOfChildrenRegistered <= amountOfChildren" class="w-full max-w-xs mx-auto">
+    <h3>Hijo {{amountOfChildrenRegistered}}</h3>
+    <form [formGroup]="addChildForm" (ngSubmit)="sendChildData()" class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
+          Nombre
+        </label>
+        <input
+          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+          id="name"
+          type="text"
+          placeholder="Juan Diego"
+          formControlName="name"
+        />
+        <div class="error-message-container" *ngIf="addPersonForm.controls['name'].errors?.['required'] && addPersonForm.controls['name'].dirty"  >
+          <p class="error-icon">El nombre es un campo requerido.</p>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="lastname">
+          Apellido
+        </label>
+        <input
+          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+          id="lastname"
+          type="text"
+          placeholder="Porras"
+          formControlName="lastname"
+        />
+        <div class="error-message-container" *ngIf="addPersonForm.controls['name'].errors?.['required'] && addPersonForm.controls['name'].dirty"  >
+          <p class="error-icon">El nombre es un campo requerido.</p>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block checkbox text-sm font-bold text-gray-700" for="hasFavoriteMovies">
+          <input
+          class=" px-3 py-2 leading-tight text-gray-500 border rounded appearance-none focus:outline-none"
+          id="hasFavoriteMovies"
+          type="checkbox"
+          formControlName="hasFavoriteMovies"
+
+        />
+          <span>Tiene peliculas favoritas</span>
+
+        </label>
+
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="age">
+          Edad
+        </label>
+        <input
+          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+          id="age"
+          type="number"
+          placeholder="1"
+          formControlName="age"
+        />
+        <div class="error-message-container" *ngIf="addChildForm.controls['age'].errors?.['required'] && addChildForm.controls['age'].dirty"  >
+          <p class="error-icon">La cantidad de peliculas es un campo requerido.</p>
+        </div>
+
+
+      </div>
+      <div *ngIf="addChildForm.get('hasFavoriteMovies')?.value"class="mb-4">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="amountOfMovies">
+          Cantidad de peliculas
+        </label>
+        <input
+          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+          id="amountOfMovies"
+          type="number"
+          placeholder="1"
+          formControlName="amountOfMovies"
+        />
+        <div class="error-message-container" *ngIf="addChildForm.controls['amountOfMovies'].errors?.['required'] && addChildForm.controls['amountOfMovies'].dirty"  >
+          <p class="error-icon">La cantidad de peliculas es un campo requerido.</p>
+        </div>
+
+
+      </div>
+      <div class="flex items-center justify-between">
+        <button
+          class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
+          type="submit"
+        >
+          Enviar
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!--Form to add movie-->
+  <section *ngIf="hasFavoriteMovies && amountOfMoviesRegistered <= amountOfMovies" class="w-full max-w-xs mx-auto">
+    <h3>Pelicula {{amountOfMoviesRegistered}}</h3>
+    <form [formGroup]="addMovieForm" (ngSubmit)="sendMovieData()" class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
+          Nombre
+        </label>
+        <input
+          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+          id="name"
+          type="text"
+          placeholder="Juan Diego"
+          formControlName="name"
+        />
+        <div class="error-message-container" *ngIf="addMovieForm.controls['name'].errors?.['required'] && addMovieForm.controls['name'].dirty"  >
+          <p class="error-icon">El nombre es un campo requerido.</p>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="director">
+          Director
+        </label>
+        <input
+          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+          id="name"
+          type="text"
+          placeholder="Juan Diego"
+          formControlName="director"
+        />
+        <div class="error-message-container" *ngIf="addMovieForm.controls['director'].errors?.['required'] && addMovieForm.controls['director'].dirty"  >
+          <p class="error-icon">El nombre es un campo requerido.</p>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="block mb-2 text-sm font-bold text-gray-700" for="year">
+          Ano
+        </label>
+        <input
+          class="w-full px-3 py-2 leading-tight text-gray-700 border rounded appearance-none focus:outline-none"
+          id="name"
+          type="text"
+          placeholder="Juan Diego"
+          formControlName="year"
+        />
+        <div class="error-message-container" *ngIf="addMovieForm.controls['year'].errors?.['required'] && addMovieForm.controls['year'].dirty"  >
+          <p class="error-icon">El nombre es un campo requerido.</p>
+        </div>
+        <div class="mb-4">
+          <label class="block checkbox text-sm font-bold text-gray-700" for="hasOscar">
+            <input
+            class=" px-3 py-2 leading-tight text-gray-500 border rounded appearance-none focus:outline-none"
+            id="hasOscar"
+            type="checkbox"
+            formControlName="hasOscar"
+
+          />
+            <span>Tiene Oscar</span>
+
+          </label>
+
+        </div>
+      </div>
+
+    </form>
+
+  </section>
+
+</div>
+
