@@ -5,8 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './modules/auth/auth.module';
-import { HttpClientModule } from '@angular/common/http';
 import { GroupsModule } from './modules/groups/groups.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
+import { SharedModule } from './modules/shared/shared.module';
+import { NewsModule } from './modules/news/news.module';
 
 @NgModule({
   declarations: [
@@ -18,9 +21,17 @@ import { GroupsModule } from './modules/groups/groups.module';
     BrowserAnimationsModule,
     AuthModule,
     GroupsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
+    NewsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }, 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,10 @@
+<app-preloader *ngIf=!contentIsCharged></app-preloader>
+<div *ngIf=contentIsCharged>
+   <header>
+    <img src="{{new.imageUrl}}" alt="">
+    <h2 class="text-3xl font-bold mb-4">{{ new.title }}</h2>
+    <p>{{ new.date }}</p>
+   </header>
+    <p >{{ new.largeDescription }}</p>
+   
+  </div>

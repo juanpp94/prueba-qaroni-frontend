@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { GeneralService } from 'src/app/services/general.service';
@@ -23,7 +24,7 @@ export class LoginComponent {
 
 
 
-  constructor(private _authService: AuthService, private _generalService: GeneralService) {
+  constructor(private _authService: AuthService, private _generalService: GeneralService, private router: Router) {
 
   }
 
@@ -41,6 +42,7 @@ export class LoginComponent {
         (res) => {
           let tokenAux = res["result"][0]["access_token"];
           localStorage.setItem("token",tokenAux);
+          this.router.navigateByUrl("/groups")
         },
         (error) => {
           let errorMessage = "No se ha podido iniciar sesión";

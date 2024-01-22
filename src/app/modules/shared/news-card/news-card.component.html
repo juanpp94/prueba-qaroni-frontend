@@ -1,0 +1,20 @@
+<li  class="relative flex flex-col sm:flex-row xl:flex-col items-start">
+    <mat-card>
+        <img mat-card-image [src]="new.imageUrl" />
+        <br />
+        <mat-card-header>
+          <mat-card-title>{{ new.title }} </mat-card-title>
+        </mat-card-header>
+        <br />
+        <mat-card-content>
+          <br />
+          <p>{{ new.shortDescription }}</p>
+        </mat-card-content>
+        <mat-card-actions class="card-footer">
+            <button mat-button [routerLink]="[new.newId]"
+            class="group inline-flex items-center h-9 rounded-full text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 focus:ring-slate-500 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white dark:focus:ring-slate-500 mt-6"
+             >Leer más</button>
+             <p>{{new.date}}</p>
+        </mat-card-actions>
+    </mat-card>
+</li>
