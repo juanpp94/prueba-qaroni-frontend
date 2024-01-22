@@ -13,7 +13,7 @@
           placeholder="your@email.com"
           formControlName="username"
         />
-        <div class="error-message-container" *ngIf="loginForm.controls['username'].errors?.['required'] && loginForm.controls['username'].dirty && loginForm.controls['username'].touched"  >
+        <div class="error-message-container" *ngIf="loginForm.controls['username'].errors?.['required'] && loginForm.controls['username'].dirty"  >
           <p class="error-icon">El usuario es un campo requerido.</p>
         </div>
       </div>
@@ -32,7 +32,7 @@
           <p class="error-icon">La contraseña es un campo requerido.</p>
         </div>
       </div>
-      
+
       <div class="flex items-center justify-between">
         <button
           class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
