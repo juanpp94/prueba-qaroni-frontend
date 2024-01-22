@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Group } from 'src/app/models/group';
+import { GeneralService } from 'src/app/services/general.service';
 import { GroupsService } from 'src/app/services/groups.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class GroupslistComponent {
   groups: Group[] = [];
   contentIsCharged: boolean = false;
   //group: Group = {'groupId': '', 'name': '', 'description': '', 'category': {'name': '',  'description': ''}}
-  constructor(private _groupsService : GroupsService) {
+  constructor(private _groupsService : GroupsService, private _generalService: GeneralService) {
 
   }
 
@@ -24,16 +25,13 @@ export class GroupslistComponent {
   /**Method that set the groups from the API request */
   setGroups(groups: Group[]): void {
     this.groups = groups;
-    //This was added so we can assure that the preloader will appear.
-    setTimeout(() => {
-      this.contentIsCharged = true;
-    }, 3000);
   }
 
   /** Method that get the groups from the API request */
   getGroups() {
     this._groupsService.getGroups().subscribe(
       (res) => {
+        this.contentIsCharged = true;
         console.log("res:",res)
         let groupsAux = res['result'];
         for(let i = 0; i < groupsAux.length; i++) {
@@ -46,8 +44,10 @@ export class GroupslistComponent {
         }
       },
       (error) => {
-        console.log("error:",error);
+        this.contentIsCharged = false;
+        //let errorMessage = "Ha ocurrido un error en la carga de la data.";
         this._groupsService.groups = [];
+        //this._generalService.setErrorMessage(errorMessage);
       }
     )
     return this._groupsService.groups;

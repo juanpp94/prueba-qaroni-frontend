@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { New } from 'src/app/models/new';
 import { GeneralService } from 'src/app/services/general.service';
 import { NewsService } from 'src/app/services/news.service';
@@ -12,7 +13,7 @@ export class NewslistComponent {
 
   news: New[] = [];
   contentIsCharged: boolean = false;
-  constructor(private _newsService: NewsService, private _generalService: GeneralService) {
+  constructor(private _newsService: NewsService, private _generalService: GeneralService, private router: Router ) {
 
   }
 
@@ -30,9 +31,6 @@ export class NewslistComponent {
    */
   setNews(news: New[]): any {
     this.news = news;
-    setTimeout(() => {
-      this.contentIsCharged = true;
-    }, 3000);
     
   }
 
@@ -42,8 +40,10 @@ export class NewslistComponent {
   getNews(): New[] {
     this._newsService.getNews().subscribe(
       (res) => {
+        this.contentIsCharged = true;
         let newsAux = res['result'];
         for(let i = 0; i < newsAux.length; i++) {
+          
           let shortDescriptionAux = this._generalService.convertDescriptionIntoPlainText(newsAux[i]['shortDescription']);
           let largeDescriptionAux = this._generalService.convertDescriptionIntoPlainText(newsAux[i]['longDescription'])
           this._newsService.new = {'newId': newsAux[i]['newId'], 'date': newsAux[i]['date'], 'imageUrl': newsAux[i]['imageUrl'], 'largeDescription': largeDescriptionAux, 'shortDescription': shortDescriptionAux, 'title': newsAux[i]['title']}
@@ -54,12 +54,22 @@ export class NewslistComponent {
         
       },
       (error) => {
+        this.contentIsCharged = true;
         this._newsService.news = [];
+        let errorMessage = "Ha ocurrido un error al momento de cargar la data. Asegúrese que tenga conexión a Internet."
+        this._generalService.setErrorMessage(errorMessage);
+        //this.router.navigateByUrl("groups/list");
+        //this.contentIsCharged = false;
+    
         
       }
     )
     return this._newsService.news;
   }
+
+  
+
+
 
   
 }

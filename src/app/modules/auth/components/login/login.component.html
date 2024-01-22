@@ -1,4 +1,5 @@
-<div class="container-center">
+<app-preloader *ngIf=showLoader></app-preloader>
+<div *ngIf=!showLoader class="container-center">
   <section class="w-full max-w-xs mx-auto">
     <form [formGroup]="loginForm" (ngSubmit)="sendCredentials()" class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
       <div class="mb-4">
@@ -12,8 +13,8 @@
           placeholder="your@email.com"
           formControlName="username"
         />
-        <div class="error-message-container" *ngIf="loginForm.controls['username'].errors?.['required'] && loginForm.controls['username'].dirty"  >
-          <p class="error-icon">Username is a required field</p>
+        <div class="error-message-container" *ngIf="loginForm.controls['username'].errors?.['required'] && loginForm.controls['username'].dirty && loginForm.controls['username'].touched"  >
+          <p class="error-icon">El usuario es un campo requerido.</p>
         </div>
       </div>
       <div class="mb-4">
@@ -28,9 +29,10 @@
           formControlName="password"
         />
         <div class="error-message-container" *ngIf="loginForm.controls['password'].errors?.['required'] && loginForm.controls['password'].dirty"  >
-          <p class="error-icon">Username is a required field</p>
+          <p class="error-icon">La contraseña es un campo requerido.</p>
         </div>
       </div>
+      
       <div class="flex items-center justify-between">
         <button
           class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
