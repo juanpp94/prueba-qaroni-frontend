@@ -34,5 +34,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: flex;
     align-self: end;
     margin: 0 0 5px;
+    font-weight: 500;
+    color: gray;
   }
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
 }

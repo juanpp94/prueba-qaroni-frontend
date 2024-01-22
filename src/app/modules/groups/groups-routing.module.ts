@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GroupslistComponent } from './groupslist/groupslist.component';
-import { GroupsdetailComponent } from './groupsdetail/groupsdetail.component';
+import { GroupdetailComponent } from './components/groupdetail/groupdetail.component';
 
 const routes: Routes = [
   {
     path: 'list',
     component: GroupslistComponent
   }, {
-    path: ':id',
-    component: GroupsdetailComponent
+    path: 'list/:id',
+    component: GroupdetailComponent
   }
 ];
 

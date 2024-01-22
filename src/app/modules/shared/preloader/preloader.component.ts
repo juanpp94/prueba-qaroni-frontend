@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class PreloaderComponent {
 
+  ngOnInit() {
+    console.log("en teoria entre");
+  }
 }

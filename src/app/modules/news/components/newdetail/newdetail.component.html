@@ -1,10 +1,28 @@
 <app-preloader *ngIf=!contentIsCharged></app-preloader>
-<div *ngIf=contentIsCharged>
+<div class="button-container">
+  <button
+  class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
+  routerLink="/news/list"
+>
+  Volver a las noticias
+</button>
+</div>
+<div class="new-detail-container" *ngIf=contentIsCharged>
    <header>
     <img src="{{new.imageUrl}}" alt="">
     <h2 class="text-3xl font-bold mb-4">{{ new.title }}</h2>
-    <p>{{ new.date }}</p>
    </header>
+    <p class="new-date">{{ new.date}}</p>
     <p >{{ new.largeDescription }}</p>
-   
+    
   </div>
+  <div class="button-container">
+    <button
+    class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
+    routerLink="/news/list"
+  >
+    Volver a las noticias
+  </button>
+</div>
+
+

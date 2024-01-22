@@ -1,11 +1,52 @@
-.preloader-container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+.new-detail-container {
+    border: 2px solid gray;
+    margin: 20px 20px;
+    //padding: 20px 0px;
+    //border-radius: 20px;
+    //box-shadow: chocolate;
+    box-shadow: 1px -1px 21px -3px rgba(0,0,0,0.75);
 
-    .preloader {
-        width: 50%;
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        h2 {
+            align-self: self-start;
+            padding: 20px 10px 0px 20px ;
+            margin: 0px;
+        }
+    
+        
+    
+        
     }
+    
+    p {
+        padding: 0px 20px;
+    }
+    
+    .new-date {
+        font-weight: 500;
+    color: gray;
+    padding-top: 10px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

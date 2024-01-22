@@ -10,13 +10,13 @@ import { GroupsService } from 'src/app/services/groups.service';
 export class GroupslistComponent {
 
   groups: Group[] = [];
+  contentIsCharged: boolean = false;
   //group: Group = {'groupId': '', 'name': '', 'description': '', 'category': {'name': '',  'description': ''}}
   constructor(private _groupsService : GroupsService) {
 
   }
 
   ngOnInit() {
-    console.log("holi");
     let groupsAux = this.getGroups();
     this.setGroups(groupsAux);
   }
@@ -24,6 +24,10 @@ export class GroupslistComponent {
   /**Method that set the groups from the API request */
   setGroups(groups: Group[]): void {
     this.groups = groups;
+    //This was added so we can assure that the preloader will appear.
+    setTimeout(() => {
+      this.contentIsCharged = true;
+    }, 3000);
   }
 
   /** Method that get the groups from the API request */
@@ -33,8 +37,9 @@ export class GroupslistComponent {
         console.log("res:",res)
         let groupsAux = res['result'];
         for(let i = 0; i < groupsAux.length; i++) {
+          //console.log("image:", groupsAux);
           this._groupsService.group = {
-            'groupId': groupsAux[i]['groupId'], 'imageUrl': groupsAux['imageUrl'], 'name': groupsAux[i]['name'], 'description': groupsAux[i]['description'], 'category': {'name':groupsAux[i]['category']['name'],'description': groupsAux[i]['category']['description']}
+            'groupId': groupsAux[i]['groupId'], 'imageUrl': groupsAux[i]['imageUrl'], 'name': groupsAux[i]['name'], 'description': groupsAux[i]['description'], 'category': {'name':groupsAux[i]['category']['name'],'description': groupsAux[i]['category']['description']}
           }
           this._groupsService.groups.push(this._groupsService.group);
           

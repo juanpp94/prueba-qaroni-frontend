@@ -1,1 +1,27 @@
-<p>groupdetail works!</p>
+<app-preloader *ngIf=!contentIsCharged></app-preloader>
+<div class="button-container">
+  <button
+  class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
+  routerLink="/groups/list"
+>
+  Volver a los grupos
+</button>
+</div>
+<div class="group-detail-container" *ngIf=contentIsCharged>
+   <header>
+    <img src="{{group.imageUrl}}" alt="">
+    <h2 class="text-3xl font-bold mb-4">{{ group.name }}</h2>
+    <p >{{group.category.name}}</p>
+   </header>
+   <p class="group-description">"{{group.description}}"</p>
+    <p> {{group.category.description}}</p>
+   
+  </div>
+  <div class="button-container">
+    <button
+    class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
+    routerLink="/groups/list"
+  >
+    Volver a los grupos
+  </button>
+</div>

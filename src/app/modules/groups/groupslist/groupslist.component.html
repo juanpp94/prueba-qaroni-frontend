@@ -1,3 +1,6 @@
-<div>
-    {{groups | json}}
+<app-preloader *ngIf=!contentIsCharged></app-preloader>
+
+<div *ngIf=contentIsCharged class="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8" >
+    <app-groups-card [group]="group" *ngFor="let group of groups"></app-groups-card>
 </div>
+

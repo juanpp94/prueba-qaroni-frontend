@@ -11,6 +11,7 @@ import { NewsService } from 'src/app/services/news.service';
 export class NewslistComponent {
 
   news: New[] = [];
+  contentIsCharged: boolean = false;
   constructor(private _newsService: NewsService, private _generalService: GeneralService) {
 
   }
@@ -29,6 +30,9 @@ export class NewslistComponent {
    */
   setNews(news: New[]): any {
     this.news = news;
+    setTimeout(() => {
+      this.contentIsCharged = true;
+    }, 3000);
     
   }
 

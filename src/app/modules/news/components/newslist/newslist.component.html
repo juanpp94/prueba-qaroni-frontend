@@ -1,4 +1,4 @@
-<app-preloader *ngIf=news.length === 0></app-preloader>
-<ul  class="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
+<app-preloader *ngIf=!contentIsCharged></app-preloader>
+<ul *ngIf=contentIsCharged  class="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8">
   <app-news-card [new]="new" *ngFor="let new of news"></app-news-card>
 </ul>

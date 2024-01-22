@@ -1,0 +1,18 @@
+<mat-card class="example-card">
+    <picture class="image-container">
+        <img mat-card-image src="{{group.imageUrl}}" alt="Photo of a Shiba Inu">
+    </picture>
+    <mat-card-header>
+      <mat-card-title>{{group.name}}</mat-card-title>
+      <mat-card-subtitle>{{group.category.name}}</mat-card-subtitle>
+    </mat-card-header>
+   
+    <mat-card-content>
+      <p>
+        {{group.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button  mat-button class="group inline-flex items-center h-9 rounded text-sm font-semibold whitespace-nowrap px-3 focus:outline-none focus:ring-2 bg-slate-100 text-slate-700 hover:bg-slate-200 hover:text-slate-900 focus:ring-slate-500 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 dark:hover:text-white dark:focus:ring-slate-500 mt-6" [routerLink]="[group.groupId]">Leer más</button>
+    </mat-card-actions>
+  </mat-card>

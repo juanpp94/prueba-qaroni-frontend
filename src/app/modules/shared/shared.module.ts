@@ -4,13 +4,15 @@ import { PreloaderComponent } from './preloader/preloader.component';
 import { NewsCardComponent } from './news-card/news-card.component';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
+import { GroupsCardComponent } from './groups-card/groups-card.component';
 
 
 
 @NgModule({
   declarations: [
     PreloaderComponent,
-    NewsCardComponent
+    NewsCardComponent,
+    GroupsCardComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { MatCardModule } from '@angular/material/card';
   exports: [
     PreloaderComponent,
     NewsCardComponent,
-    MatCardModule
+    MatCardModule,
+    GroupsCardComponent
 
     
   ]
