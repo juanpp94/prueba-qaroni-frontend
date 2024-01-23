@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { GeneralService } from './services/general.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +11,14 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'prueba-qaroni-frontend';
 
-  ngOnInit() {
+  constructor(private _generalService: GeneralService, private route: Router) {
 
+  }
+
+  ngOnInit() {
+    let token = this._generalService.getToken();
+    if(!token) {
+      this.route.navigateByUrl('auth/login');
+    }
   }
 }

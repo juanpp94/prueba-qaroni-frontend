@@ -4,22 +4,25 @@ import { LoginComponent } from './modules/auth/components/login/login.component'
 import { sessionGuard } from './guards/session.guard';
 
 const routes: Routes = [
+
   {
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth.module').then( m => m.AuthModule)
-  }, {
-    path: 'groups',
-    loadChildren: () => import('./modules/groups/groups.module').then( m => m.GroupsModule),
+  },
+  {
+    path: '',
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then( m => m.DashboardModule),
     canActivate: [sessionGuard]
   },
-  {
-    path: 'news',
-    loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule)
-  },
-  {
-    path: 'people',
-    loadChildren: () => import('./modules/people/people.module').then(m => m.PeopleModule)
-  }
+
+  // {
+  //   path: 'news',
+  //   loadChildren: () => import('./modules/news/news.module').then(m => m.NewsModule)
+  // },
+  // {
+  //   path: 'people',
+  //   loadChildren: () => import('./modules/people/people.module').then(m => m.PeopleModule)
+  // }
 ];
 
 @NgModule({

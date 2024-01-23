@@ -40,22 +40,24 @@ export class LoginComponent {
    * Method to login into the application
    */
   sendCredentials() {
+    this.showLoader = true;
     this.user.username = this.loginForm.value.username!;
     this.user.password = this.loginForm.value.password!;
     if(this.user.username === '' || this.user.password === '') {
       //console.log("holi");
       let errorMessage = "Todos los campos del formulario son obligatorios."
       this._generalService.setErrorMessage(errorMessage);
+      this.showLoader = false;
     }
     else {
 
-      
+
         this._authService.sendCredentials(this.user).subscribe(
           (res) => {
             this.showLoader = false;
             let tokenAux = res["result"][0]["access_token"];
             localStorage.setItem("token",tokenAux);
-            this.router.navigateByUrl("/groups")
+            this.router.navigateByUrl("/")
           },
           (error) => {
             this.showLoader = false;
@@ -77,7 +79,7 @@ export class LoginComponent {
 
 
     }
-    
+
 
 }
 

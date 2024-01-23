@@ -10,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './interceptors/auth-interceptor.service';
 import { SharedModule } from './modules/shared/shared.module';
 import { NewsModule } from './modules/news/news.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @NgModule({
   declarations: [
@@ -23,14 +24,15 @@ import { NewsModule } from './modules/news/news.module';
     GroupsModule,
     HttpClientModule,
     SharedModule,
-    NewsModule
+    NewsModule,
+    DashboardModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true
-    }, 
+    },
   ],
   bootstrap: [AppComponent]
 })

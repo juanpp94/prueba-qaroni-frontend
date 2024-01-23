@@ -1,0 +1,17 @@
+
+<div class="container-dashboard">
+  <h1>Bienvenido, elige la opción que desees realizar</h1>
+  <div class="grid grid-cols-1 xl:grid-cols-3 gap-y-10 gap-x-6 items-start p-8" >
+    <app-dashboard-card [menuItem] = "item" *ngFor="let item of menu"></app-dashboard-card>
+  </div>
+
+  <div class="button-container">
+    <button
+    class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none"
+    routerLink="/auth/login"
+    (click)="closeSession()"
+  >
+    Cerrar sesión
+  </button>
+</div>
+

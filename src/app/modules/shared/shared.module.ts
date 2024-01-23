@@ -5,6 +5,7 @@ import { NewsCardComponent } from './news-card/news-card.component';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { GroupsCardComponent } from './groups-card/groups-card.component';
+import { DashboardCardComponent } from './components/dashboard-card/dashboard-card.component';
 
 
 
@@ -12,7 +13,8 @@ import { GroupsCardComponent } from './groups-card/groups-card.component';
   declarations: [
     PreloaderComponent,
     NewsCardComponent,
-    GroupsCardComponent
+    GroupsCardComponent,
+    DashboardCardComponent
   ],
   imports: [
     CommonModule,
@@ -23,9 +25,10 @@ import { GroupsCardComponent } from './groups-card/groups-card.component';
     PreloaderComponent,
     NewsCardComponent,
     MatCardModule,
-    GroupsCardComponent
+    GroupsCardComponent,
+    DashboardCardComponent
 
-    
+
   ]
 })
 export class SharedModule { }
