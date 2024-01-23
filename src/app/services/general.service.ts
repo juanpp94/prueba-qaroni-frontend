@@ -22,6 +22,17 @@ export class GeneralService {
     });
   }
 
+
+  setSuccessfulMessage(message: string): void {
+    Swal.fire({
+      icon: "success",
+      title: "Persona agregada",
+      text: message,
+    });
+  }
+
+
+  
   /**
    * Function that returns the token from local storage to authorize requests
    */
