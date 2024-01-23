@@ -65,11 +65,11 @@ export class AddPersonComponent {
    */
   sendPersonData() {
 
-    console.log(this.addPersonForm.value);
+    //console.log(this.addPersonForm.value);
     this.person.name = this.addPersonForm.value.name!;
     this.person.lastname = this.addPersonForm.value.lastname!;
     if(!this.addPersonForm.invalid) {
-      console.log("la persona:",this.person);
+      //console.log("la persona:",this.person);
 
       this.amountOfChildren = this.addPersonForm.value.amountOfChildren!;
       //Validate if the person has children
@@ -80,6 +80,7 @@ export class AddPersonComponent {
         this.hasOlderChildren = true;
       } else {
         this.people.push(this.person);
+        console.log("Personas agregadas:",this.people);
         let successMessage = "La persona se ha agregado satisfactoriamente.";
         this.addPersonForm.value.hasOlderChildren = false;
         this._generalService.setSuccessfulMessage(successMessage)
@@ -102,14 +103,14 @@ export class AddPersonComponent {
    * Method that sends the information of the Child
    */
   sendChildData() {
-    console.log(this.addChildForm.value);
+    //console.log(this.addChildForm.value);
     if(!this.addChildForm.invalid) {
       this.child.name = this.addChildForm.value.name!;
       this.child.lastname = this.addChildForm.value.lastname!;
       this.child.amountOfMovies = this.addChildForm.value.amountOfMovies!;
       this.child.age = this.addChildForm.value.age!
       this.amountOfMovies = this.addChildForm.value.amountOfMovies!;
-      console.log("el hijo:",this.child);
+      //console.log("el hijo:",this.child);
       //this.person.children = this.children;
       this.amountOfChildrenRegistered += 1;
 
@@ -152,6 +153,7 @@ export class AddPersonComponent {
           this.children.push(this.child);
           this.person.children = this.children;
           this.people.push(this.person);
+          console.log("Personas agregadas:",this.people);
           let successMessage = "La persona se ha agregado satisfactoriamente.";
           this.addChildForm.value.hasFavoriteMovies = false;
           this._generalService.setSuccessfulMessage(successMessage);
@@ -188,7 +190,7 @@ export class AddPersonComponent {
       this.movie.year = this.addMovieForm.value.year!;
       this.movie.hasOscar = this.addMovieForm.value.hasOscar!;
       this.movies.push(this.movie);
-      console.log("pelicula:",this.movie);
+      //console.log("pelicula:",this.movie);
       this.amountOfMoviesRegistered += 1;
       //Validate if it's the last movie
       if(this.amountOfMoviesRegistered > this.amountOfMovies) {
@@ -201,12 +203,13 @@ export class AddPersonComponent {
           let successMessage = "La persona se ha agregado satisfactoriamente.";
           this._generalService.setSuccessfulMessage(successMessage);
           this.addChildForm.value.hasFavoriteMovies = false;
-          console.log("el hijo depues de la pelicula:",this.child);
+          //console.log("el hijo depues de la pelicula:",this.child);
           this.children.push(this.child);
           this.person.children = this.children;
-          console.log("persona con pelicula:",this.person);
+          //console.log("persona con pelicula:",this.person);
           //localStorage.setItem("people",JSON.stringify(this.people));
           this.people.push(this.person);
+          console.log("Personas agregadas:",this.people);
           this.person = {'name': '', 'lastname' : '', 'children': []};
           this.child = {'name': '', 'lastname': '', 'age': 0, "movies": [], amountOfMovies: 0};
           this.movie = {'name': '', 'director': '', 'year' : 0, 'hasOscar' : false}

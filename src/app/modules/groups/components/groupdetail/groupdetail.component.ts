@@ -21,13 +21,13 @@ export class GroupdetailComponent {
   ngOnInit() {
     this.setGroupId();
     this.getGroup();
-  
+
   }
 
   setGroupId(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      console.log(this.id);
+      //console.log(this.id);
     });
 
   }
@@ -35,13 +35,13 @@ export class GroupdetailComponent {
   getGroup(): void {
     this._groupsService.getGroup(this.id).subscribe(
       (res) => {
-        console.log("res:",res);
+        //console.log("res:",res);
         let groupAux = res['result'][0];
         this.setGroup(groupAux);
-  
+
       },
       (error) => {
-        console.log("error:",error);
+        //console.log("error:",error);
       }
     )
   }
@@ -58,6 +58,6 @@ export class GroupdetailComponent {
 
 
 
-  
+
 
 }

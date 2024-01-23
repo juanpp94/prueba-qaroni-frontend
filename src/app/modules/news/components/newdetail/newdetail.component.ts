@@ -30,7 +30,7 @@ export class NewdetailComponent {
   setNewId(): void {
     this.route.params.subscribe(params => {
       this.id = params['id'];
-      console.log(this.id);
+      //console.log(this.id);
     });
 
   }
@@ -39,13 +39,13 @@ export class NewdetailComponent {
   getNew(): void {
     this._newsService.getNew(this.id).subscribe(
       (res) => {
-        console.log("res:",res);
+        //console.log("res:",res);
         let newAux = res['result'][0];
         this.setNew(newAux);
-        
+
       },
       (error) => {
-        console.log("error:",error);
+        //console.log("error:",error);
       }
     )
   }
