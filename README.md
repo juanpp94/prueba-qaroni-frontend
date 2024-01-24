@@ -1,4 +1,4 @@
-# Phonebook
+# Prueba Qaroni Fronted
 This projects consists in the implementation of a webapp composed by 4 screens:
 
 - Dashboard: Contain shortcuts to start using the webapp
