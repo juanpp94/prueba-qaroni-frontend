@@ -1,27 +1,30 @@
-# PruebaQaroniFrontend
+# Phonebook
+This projects consists in the implementation of a webapp composed by 4 screens:
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+- Dashboard: Contain shortcuts to start using the webapp
+
+- Groupt list: Shows a list of the groups obtained from the API.
+
+- Group detail: Show the details of an specfic group.
+
+- News list: Shows a list of the news obtained from the API.
+
+- New detail: Shows the details of an specific news
+
+- Add Person: Form to add new people.
+
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To start the server you need to follow these steps:
+1. Install angular `npm install -g @angular/cli`
+2. Clone the following repository: `git clone https://github.com/juanpp94/phonebook.git`
+3. Move into the folder of the repository cloned in the previous step and execute npm install
+4. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Framework and libraries
+- Angular 16.0.0
+- Tailwindcss 3.4.1
+- Sweetalert2 11.10.3
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
